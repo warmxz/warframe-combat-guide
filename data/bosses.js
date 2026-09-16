@@ -1,0 +1,440 @@
+window.WARFRAME_COMBAT_DATA = {
+  updated: "2026-09-16",
+  scope: "PC 国际服主星图固定刺杀与关键特殊目标",
+  bosses: [
+    {
+      id: "mercury-vor",
+      planet: "水星",
+      planetEn: "MERCURY",
+      node: "Tolstoj",
+      boss: "沃尔上尉",
+      bossEn: "Captain Vor",
+      faction: "Grineer",
+      factionLabel: "Grineer",
+      difficulty: "入门",
+      weakpoint: "头部；电磁地雷出现时先处理地雷",
+      elements: ["辐射", "腐蚀", "磁力"],
+      reward: "Seer 部件 / Cronus 蓝图",
+      summary: "传送、Seer 射击和 Nervos 电击地雷是主要威胁。普通 Tolstoj 直接打头即可；若遇到 2025 后的雅努斯重置版本，场地机关优先级高于本体。",
+      steps: [
+        "小怪先清一圈，避免倒地时被围住。",
+        "看到地面放电装置先打掉，再追本体；不要站在传送落点。",
+        "持续瞄头部输出，护盾/护甲厚的任务版本先用磁力或削甲工具处理。"
+      ],
+      note: "水星标准刺杀是最适合理解“先处理机制、再打弱点”的入门战。",
+      video: { bvid: "BV1pxgdzuEhe", title: "沃尔上尉重置 | 荣誉浮印获得 | 雅努斯沃尔上尉流程 | warframe | 星际战甲", author: "Anja13", date: "2025-06-29", note: "2025 重置版流程" }
+    },
+    {
+      id: "venus-jackal",
+      planet: "金星",
+      planetEn: "VENUS",
+      node: "Fossa",
+      boss: "豺狼",
+      bossEn: "Jackal",
+      faction: "Corpus",
+      factionLabel: "Corpus",
+      difficulty: "入门",
+      weakpoint: "四条腿的关节/发光散热口；倒地后处决核心",
+      elements: ["辐射", "电击", "磁力"],
+      reward: "Rhino 部件",
+      summary: "不要对着躯干硬灌伤害。轮换破坏四条腿，豺狼倒地后会出现 Parazon 处决窗口，重复到核心被打穿。",
+      steps: [
+        "优先打腿，四条腿都破坏后它才会稳定倒地。",
+        "看到旋转激光阵、震地和导弹时横向移动，不要贴脸站桩。",
+        "倒地后用交互/处决完成这一阶段，再打下一轮。"
+      ],
+      note: "这是新手最早会遇到的教学型弱点首领，推荐先练会打腿。",
+      video: { bvid: "BV1HxqsBAEsf", title: "星际战甲萌新攻略：金星刺杀-豺狼", author: "孤独的炸薯条", date: "2025-12-15", note: "新版流程" }
+    },
+    {
+      id: "earth-vay-hek",
+      planet: "地球",
+      planetEn: "EARTH",
+      node: "Oro",
+      boss: "瓦黑克议员",
+      bossEn: "Councilor Vay Hek",
+      faction: "Grineer",
+      factionLabel: "Grineer",
+      difficulty: "开图门槛",
+      weakpoint: "脸部；Terra Frame 装甲打开时或飞行形态暴露时",
+      elements: ["辐射", "腐蚀", "病毒"],
+      reward: "Hydroid 部件",
+      summary: "第一阶段的 Terra Frame 会保护身体，只能抓脸部窗口；血量阶段变化后会进入飞行形态，继续追打脸部而不是躯干。",
+      steps: [
+        "等他开脸/停下攻击时再打，装甲闭合时不要浪费高伤爆发。",
+        "飞行阶段保持中距离，利用掩体躲火箭齐射和地面冲击。",
+        "高护甲目标优先辐射；能削甲时再补病毒提高本体伤害。"
+      ],
+      note: "常见误区：对着装甲和大体型疯狂输出，实际有效点很小。",
+      video: { bvid: "BV1ay4y187q1", title: "warframe&星际战甲地球boss议员VAY HEK萌新简易打法速杀流程介绍", author: "WF柒幺伍", date: "2021-03-13", note: "脸部窗口讲得清楚" }
+    },
+    {
+      id: "mars-sergeant",
+      planet: "火星",
+      planetEn: "MARS",
+      node: "War",
+      boss: "军士",
+      bossEn: "The Sergeant",
+      faction: "Corpus",
+      factionLabel: "Corpus",
+      difficulty: "入门",
+      weakpoint: "头部；隐身/瞬移后重新锁定",
+      elements: ["磁力", "毒素", "病毒"],
+      reward: "Mag 部件",
+      summary: "军士会隐身、瞬移并召唤 Corpus 支援，本体血量不高但容易被杂兵拖时间。雷达、声纳和范围控制能显著降低丢失目标的概率。",
+      steps: [
+        "先点掉护盾无人机和支援单位，避免本体反复回盾。",
+        "磁力快速削盾；破盾后毒素/病毒处理肉体。",
+        "他停下射击时打头，不要在隐身阶段追着空放技能。"
+      ],
+      note: "别名：中尉。节点仍是火星 War。",
+      video: { bvid: "BV1zp4YenErd", title: "【Warframe】萌新向刺杀火星boss中尉打法【仅供参考】", author: "first奇语", date: "2024-09-10", note: "萌新向" }
+    },
+    {
+      id: "ceres-lech-kril-vor",
+      planet: "谷神星",
+      planetEn: "CERES",
+      node: "Exta",
+      boss: "莱希·克利尔与沃尔上尉",
+      bossEn: "Lech Kril & Captain Vor",
+      faction: "Grineer",
+      factionLabel: "Grineer",
+      difficulty: "双首领",
+      weakpoint: "莱希背部的冷却管；沃尔头部",
+      elements: ["辐射", "腐蚀", "磁力"],
+      reward: "Frost 部件",
+      summary: "双首领同场。莱希·克利尔的关键在背部冷却管，破坏后会进入冻结/硬直窗口；沃尔负责传送和远程干扰。",
+      steps: [
+        "先观察莱希背部发光管，打爆后抓紧冻结窗口输出。",
+        "沃尔传送频繁时不要追进怪堆，先保持视野并处理护盾。",
+        "双目标不要平均分伤，优先解决一个能显著降低场面压力。"
+      ],
+      note: "老视频可看弱点流程；若想同时核对新版本，可搭配 2026 全刺杀长视频。",
+      video: { bvid: "BV1xW411T7WL", title: "【Warframe】谷神星刺杀任务教学  谷神双傻", author: "晚餐上的Supper", date: "2018-04-02", note: "老版专项，机制仍可参考" }
+    },
+    {
+      id: "jupiter-alad-v",
+      planet: "木星",
+      planetEn: "JUPITER",
+      node: "Themisto",
+      boss: "阿拉德五世",
+      bossEn: "Alad V",
+      faction: "Corpus",
+      factionLabel: "Corpus",
+      difficulty: "开图",
+      weakpoint: "头部 / 背包护盾核心",
+      elements: ["磁力", "毒素", "病毒"],
+      reward: "Valkyr 部件",
+      summary: "阿拉德五世依靠护盾、瞬移和 Corpus 支援拉扯。先破盾，再打本体；不要在他瞬移时把爆发交空。",
+      steps: [
+        "先清护盾无人机和支援单位，减少护盾恢复。",
+        "磁力破盾后毒素/病毒接本体，头部优先。",
+        "场地大时保持雷达或范围技能覆盖，避免追丢。"
+      ],
+      note: "木星的阿拉德五世与阋神星的异融阿拉德五世不是同一场战斗。",
+      video: { bvid: "BV1Jv4y1v7oA", title: "全星球刺杀——木星阿拉德五世全流程演示", author: "随风老先生", date: "2023-01-10", note: "全流程" }
+    },
+    {
+      id: "jupiter-ropalolyst",
+      planet: "木星",
+      planetEn: "JUPITER",
+      node: "Ropalolyst",
+      boss: "蝠力使",
+      bossEn: "Ropalolyst",
+      faction: "Sentient",
+      factionLabel: "Sentient",
+      difficulty: "机制战",
+      weakpoint: "头部/核心；场地放电装置",
+      elements: ["辐射", "病毒", "虚空"],
+      reward: "Wisp 部件",
+      summary: "核心不是站桩打鸟。利用场地装置破盾并制造落地窗口，再用增幅器/虚空伤害重置 Sentient 适应，最后集中打头部和核心。",
+      steps: [
+        "先处理三座场地装置，别在它滞空时把弹药打空。",
+        "Sentient 适应叠起来后切 Operator/增幅器补一发虚空伤害。",
+        "落地窗口集中头部/核心；阶段循环时保持移动。"
+      ],
+      note: "中文常用名是“蝠力使”，搜索时比“罗帕洛利斯特”更容易找到视频。",
+      video: { bvid: "BV1sA411q7rT", title: "UP主教你刺杀蝙蝠（WarFrame木星蝠力使）", author: "红茶艾尔夏", date: "2020-05-29", note: "机制向旧版攻略" }
+    },
+    {
+      id: "europa-raptors",
+      planet: "欧罗巴",
+      planetEn: "EUROPA",
+      node: "Naamah",
+      boss: "猛禽",
+      bossEn: "Raptors",
+      faction: "Corpus",
+      factionLabel: "Corpus",
+      difficulty: "空战压制",
+      weakpoint: "喷射口/核心；护盾先破",
+      elements: ["磁力", "辐射", "电击"],
+      reward: "Nova 部件",
+      summary: "多只飞行猛禽轮流压制，火箭和护盾会让站桩输出很难受。抓它们悬停、转向或攻击后的窗口打推进器和核心。",
+      steps: [
+        "先破盾再打喷射口/核心，不要只追机体中心。",
+        "利用掩体躲火箭齐射，保持高台视野。",
+        "一只一只集火，避免多只同时残血后场面失控。"
+      ],
+      note: "三只猛禽的处理顺序不固定，优先打离队伍最近、护盾已破的那只。",
+      video: { bvid: "BV1fy4y1s7ia", title: "【萌新必看】星际战甲全星球 BOSS 攻略（欧罗巴猛禽篇）", author: "孙氏-五少", date: "2021-05-03", note: "专项教学" }
+    },
+    {
+      id: "saturn-sargas-ruk",
+      planet: "土星",
+      planetEn: "SATURN",
+      node: "Tethys",
+      boss: "萨加斯·鲁克",
+      bossEn: "General Sargas Ruk",
+      faction: "Grineer",
+      factionLabel: "Grineer",
+      difficulty: "弱点窗口",
+      weakpoint: "装甲打开后露出的发光热量槽",
+      elements: ["辐射", "腐蚀", "病毒"],
+      reward: "Ember 部件",
+      summary: "鲁克大部分时间不是有效伤害目标，必须等他攻击或停顿后装甲打开，集中打发光弱点。火力要爆发，不要在无敌时间倒空弹匣。",
+      steps: [
+        "观察装甲开合节奏，关甲时躲避火焰波和震地。",
+        "开甲后瞄准发光弱点，短窗口内交出高爆发。",
+        "高护甲优先辐射；能稳定削甲时再补病毒。"
+      ],
+      note: "别把伤害打在胸甲和护甲外侧；只有发光弱点是核心。",
+      video: { bvid: "BV1Lh411H7ji", title: "warframe土星刺杀sargasruk将军", author: "不会跑路的鹿大厨", date: "2021-10-03", note: "定点流程" }
+    },
+    {
+      id: "uranus-tyl-regor",
+      planet: "天王星",
+      planetEn: "URANUS",
+      node: "Titania",
+      boss: "泰尔·雷戈尔",
+      bossEn: "Tyl Regor",
+      faction: "Grineer",
+      factionLabel: "Grineer",
+      difficulty: "移动战",
+      weakpoint: "头部；护盾破后抓停顿窗口",
+      elements: ["磁力", "辐射", "腐蚀"],
+      reward: "Equinox 部件",
+      summary: "泰尔·雷戈尔高速位移并召唤 Manic，护盾会吃掉很多非弱点伤害。先破盾，再在他嘲讽、落地或攻击后打头。",
+      steps: [
+        "不要追着瞬移跑，站在场地中心等下一次停顿。",
+        "护盾阶段磁力削盾；破盾后辐射/腐蚀处理护甲。",
+        "Manic 出现时先控场或清掉，避免被背刺打断输出。"
+      ],
+      note: "水底实验室视角受限，建议带雷达或能标记敌人的工具。",
+      video: { bvid: "BV1VQ4y1B7jJ", title: "warframe天王星刺杀titania节点tylregor", author: "不会跑路的鹿大厨", date: "2021-10-04", note: "节点流程" }
+    },
+    {
+      id: "neptune-hyena-pack",
+      planet: "海王星",
+      planetEn: "NEPTUNE",
+      node: "Psamathe",
+      boss: "鬣狗群",
+      bossEn: "Hyena Pack",
+      faction: "Corpus",
+      factionLabel: "Corpus",
+      difficulty: "多目标",
+      weakpoint: "腿部/头部；先破护盾无人机",
+      elements: ["磁力", "辐射", "电击"],
+      reward: "Loki 部件",
+      summary: "四只不同元素的鬣狗会一拥而上。先点掉护盾与支援单位，再标记一只集火，逐个拆腿和核心。",
+      steps: [
+        "优先解决带罩/回盾的个体，避免全队伤害被护盾吃掉。",
+        "用标记或范围控制固定一只，集火脚部使其失衡。",
+        "护盾用磁力，机器人生命用辐射/电击。"
+      ],
+      note: "人越多鬣狗越多，单人反而更容易控制场面。",
+      video: { bvid: "BV1bR4y1e71n", title: "全星球追击——海王星 BOSS 鬣狗群全流程演示", author: "随风老先生", date: "2023-01-17", note: "全流程" }
+    },
+    {
+      id: "pluto-ambulas",
+      planet: "冥王星",
+      planetEn: "PLUTO",
+      node: "Hades",
+      boss: "Ambulas",
+      bossEn: "Ambulas",
+      faction: "Corpus",
+      factionLabel: "Corpus",
+      difficulty: "机制战",
+      weakpoint: "腿部/核心；倒地后黑客",
+      elements: ["磁力", "辐射", "电击"],
+      reward: "Excalibur 部件",
+      summary: "要先让 Ambulas 倒地，再完成黑客进度；单纯击杀不会推进主战役。最后原型机登场后继续打腿和核心。",
+      steps: [
+        "用减速、控制或高精度武器稳定打腿，制造倒地窗口。",
+        "倒地后立刻做黑客交互，不要继续补伤害。",
+        "原型机阶段先破盾/护甲，再集火核心。"
+      ],
+      note: "任务流程和普通刺杀不同：会打不够，关键是“让它倒地并黑掉”。",
+      video: { bvid: "BV1td4y1i7Ke", title: "warframe冥王星HADES的Ambulas真不让人省心捏", author: "克亞王族恐虐天使迪娅", date: "2022-10-07", note: "实机流程" }
+    },
+    {
+      id: "sedna-kela",
+      planet: "赛德娜",
+      planetEn: "SEDNA",
+      node: "Merrow",
+      boss: "凯拉·德赛姆",
+      bossEn: "Kela De Thaym",
+      faction: "Grineer",
+      factionLabel: "Grineer",
+      difficulty: "机关战",
+      weakpoint: "头部；第一阶段先完成压力板/目标盘机关",
+      elements: ["辐射", "腐蚀", "病毒"],
+      reward: "Saryn 部件",
+      summary: "凯拉在平台上时通常无敌，必须完成场地机关把她逼下场。第二阶段再打头部，同时躲轨道打击、旋转激光和滚子。",
+      steps: [
+        "第一阶段别对着凯拉硬打，先按提示完成压力板与目标盘。",
+        "她落地后集中头部，期间保持绕场移动。",
+        "滚子和轨道打击会打断节奏，先保命再输出。"
+      ],
+      note: "机关阶段越乱越容易团灭，分工踩板和打靶更稳。",
+      video: { bvid: "BV1Ti4y1m7HF", title: "《星际战甲》赛德娜刺杀流程打法，想获得毒妈的萌新必看！", author: "世界の鬼话", date: "2022-04-23", note: "机关流程" }
+    },
+    {
+      id: "eris-mutalist-alad-v",
+      planet: "阋神星",
+      planetEn: "ERIS",
+      node: "Naeglar",
+      boss: "异融阿拉德五世",
+      bossEn: "Mutalist Alad V",
+      faction: "Infested",
+      factionLabel: "Infested / Corpus",
+      difficulty: "控制机制",
+      weakpoint: "头部/护盾核心；被控制队友身上的项圈",
+      elements: ["磁力", "毒素", "腐蚀"],
+      reward: "Mesa 部件（需要异融阿拉德五世导航坐标）",
+      summary: "他会把项圈套在玩家身上强制内斗。队伍必须先解除被控队友的项圈，再处理护盾和本体；否则很容易被自己人打崩。",
+      steps: [
+        "看到队友被控制，优先打队友身上的项圈/控制装置，而不是继续打 BOSS。",
+        "护盾用磁力；破盾后毒素/腐蚀处理感染肉体。",
+        "不要在同一时间把所有爆发交给无敌阶段，等他恢复可伤害再打头。"
+      ],
+      note: "和木星 Themisto 的阿拉德五世区分开；这里是 Eris 的异融版本。",
+      video: { bvid: "BV16G4y1X7cM", title: "全星球追击——阋神星 BOSS 异变体阿拉德五世全流程演示", author: "随风老先生", date: "2023-01-19", note: "异融版本专项" }
+    },
+    {
+      id: "eris-jordas-golem",
+      planet: "阋神星",
+      planetEn: "ERIS",
+      node: "Jordas Golem",
+      boss: "Jordas 魔像",
+      bossEn: "Jordas Golem",
+      faction: "Infested",
+      factionLabel: "Infested",
+      difficulty: "Archwing",
+      weakpoint: "引擎/核心",
+      elements: ["辐射", "腐蚀", "冰"],
+      reward: "Atlas 部件",
+      summary: "Archwing 空战首领，核心在引擎和暴露结构。弹幕追尾很强，靠横向机动和遮挡找输出窗口。",
+      steps: [
+        "保持横向/纵向机动，别直线飞行吃满追踪弹。",
+        "接近后优先打引擎和核心，机体外壳不是最佳目标。",
+        "Archgun 选持续输出稳定的配置，辐射/腐蚀按武器基础调整。"
+      ],
+      note: "需要 Archwing 和对应任务进度；与普通地面刺杀完全不同的操作逻辑。",
+      video: { bvid: "BV1Y3411W7PH", title: "【Warframe低配低玩】JORDAS魔像刺杀，就是这样简单", author: "醒言冫", date: "2022-03-13", note: "低配实机" }
+    },
+    {
+      id: "deimos-lephantis",
+      planet: "火卫二",
+      planetEn: "DEIMOS",
+      node: "Magnacidium",
+      boss: "Lephantis",
+      bossEn: "Lephantis",
+      faction: "Infested",
+      factionLabel: "Infested",
+      difficulty: "多头机制",
+      weakpoint: "三个头的口腔/暴露核心",
+      elements: ["腐蚀", "辐射", "热"],
+      reward: "Nekros 部件",
+      summary: "三个头分别登场，每个头有独立血量与弱点窗口。必须在它们张嘴/暴露核心时打口腔，外壳和甲片会吃掉大量伤害。",
+      steps: [
+        "等头张开再输出，别把 AoE 打在甲壳上。",
+        "根据头的外观切换元素：感染/化石用腐蚀+热，辐射头用辐射。",
+        "高等级时先清触手和小怪，避免被连续击倒。"
+      ],
+      note: "三头怪是火卫二最常见的固定刺杀首领，适合用精准/爆发武器。",
+      video: { bvid: "BV1Nt4y1z7w4", title: "warframe 2 分钟击杀钢铁三头怪 Lephantis", author: "龙心龙心lxlx", date: "2021-02-15", note: "钢铁演示" }
+    },
+    {
+      id: "deimos-zealoid",
+      planet: "火卫二",
+      planetEn: "DEIMOS",
+      node: "Exequias",
+      boss: "狂热者主教",
+      bossEn: "Zealoid Prelate",
+      faction: "Infested",
+      factionLabel: "Infested",
+      difficulty: "灯光机制",
+      weakpoint: "提灯/光照后的本体头部",
+      elements: ["辐射", "热", "腐蚀"],
+      reward: "Pathocyst 部件",
+      summary: "没有灯光和火焰限制时，主教几乎无法被稳定处理。先拿提灯、完成光照/灼烧机制，再对本体集中爆发。",
+      steps: [
+        "先抢提灯并保持光线覆盖，别把提灯丢在怪堆里。",
+        "清掉不断刷新的 Infested，避免提灯手被击倒。",
+        "无敌解除后再交爆发，优先头部；辐射/热对感染系更实用。"
+      ],
+      note: "老视频里常说“没有火就是无敌”，核心就是提灯/光照窗口。",
+      video: { bvid: "BV1WtCeB5EeF", title: "[宝宝教程] warframe刺杀狂热主教-火卫二刺杀", author: "黑宫千夜", date: "2025-11-17", note: "新版宝宝教程" }
+    }
+  ],
+  specials: [
+    {
+      id: "special-phorid",
+      planet: "入侵轮换",
+      planetEn: "INVASION",
+      node: "感染爆发时替换原刺杀节点",
+      boss: "Phorid",
+      bossEn: "Phorid",
+      faction: "Infested",
+      factionLabel: "Infested",
+      difficulty: "轮换目标",
+      weakpoint: "头部/口器；先清周围 Infested",
+      elements: ["腐蚀", "热", "毒气"],
+      reward: "Nyx 部件（按当前入侵轮换）",
+      summary: "不是固定星球节点，感染爆发会把它塞进刺杀任务。它会钻地、刷小怪和远程吐刺，优先清场再打头。",
+      steps: [
+        "先用范围武器清 Infested，避免被包围。",
+        "它钻地后不要追，等重新出现再打头/口器。",
+        "腐蚀+热是通用感染系处理，Gas 适合清小怪。"
+      ],
+      note: "看到入侵界面的 Phorid 头像再进；不要把它和固定 Eris 首领混淆。",
+      video: { bvid: "BV1s4411x7Uc", title: "【warframe小C飞刀计划】 一刀解决100级Phorid（Infested刺杀目标之一）", author: "逐风之狼", date: "2019-05-02", note: "极限击杀演示" }
+    },
+    {
+      id: "special-corrupted-vor",
+      planet: "虚空",
+      planetEn: "THE VOID",
+      node: "虚空任务中特殊出现",
+      boss: "堕落沃尔",
+      bossEn: "Corrupted Vor",
+      faction: "Corrupted",
+      factionLabel: "Corrupted",
+      difficulty: "特殊事件",
+      weakpoint: "头部/能量核心",
+      elements: ["磁力", "辐射", "腐蚀"],
+      reward: "虚空任务轮换掉落",
+      summary: "不是主星图固定刺杀节点，而是在部分虚空任务中特殊出现。高护盾/高护甲、传送和范围爆发会让普通配装很难受。",
+      steps: [
+        "先破盾，再处理护甲；没有稳定削甲时优先磁力+辐射。",
+        "不要和他贴脸拼近战，注意传送后立即重新锁定。",
+        "如果只是刷资源，先确认当前轮换和任务目标。"
+      ],
+      note: "本页提供搜索入口，不绑定单一视频，避免旧版任务流程误导。",
+      video: { search: "https://search.bilibili.com/video?keyword=星际战甲%20堕落沃尔%20打法", title: "在 B 站搜索“堕落沃尔 打法”", author: "Bilibili 搜索", date: "", note: "轮换内容，按最新视频核对" }
+    }
+  ],
+  coverage: [
+    { label: "佛波斯", text: "经典推进线无固定刺杀首领，主要是资源与任务节点。" },
+    { label: "月球", text: "以任务、Sentient 和特殊关卡为主；没有传统固定刺杀首领。" },
+    { label: "赤毒要塞", text: "以赤毒任务、间谍和生存为主，BOSS 不在常规刺杀表。" },
+    { label: "虚空", text: "固定首领不适用；堕落沃尔是特殊出现目标。" },
+    { label: "扎里曼", text: "虚空天使属于特殊区域强敌，建议单独做作战篇 02。" },
+    { label: "霍瓦尼亚 / 杜维里", text: "新区域首领与开放世界逻辑不同，不混入主星图刺杀表。" }
+  ],
+  damageGuide: [
+    { title: "Grineer", kicker: "护甲阵营", text: "先判断 Ferrite 还是 Alloy。Ferrite 常用腐蚀，Alloy 常用辐射；削甲和 Heat DoT 往往比裸堆面板更重要。" },
+    { title: "Corpus", kicker: "护盾阵营", text: "磁力破盾，毒素可绕过护盾处理肉体；护盾无人机和回盾单位通常要先清。" },
+    { title: "Infested", kicker: "肉体阵营", text: "腐蚀处理化石/感染护甲，Heat 和 Gas 清杂；不要只带单体武器进刷新怪的首领战。" },
+    { title: "Sentient", kicker: "适应阵营", text: "它会适应你的伤害。辐射/病毒做主体输出，虚空伤害用来重置适应；蝠力使是典型机制战。" }
+  ]
+};
