@@ -2,6 +2,12 @@
 
 当前成品：index.html
 
+## 固定网址
+
+https://warmxz.github.io/warframe-combat-guide/
+
+仓库：https://github.com/warmxz/warframe-combat-guide
+
 ## 制作人
 
 - 制作人：WarMXZ
