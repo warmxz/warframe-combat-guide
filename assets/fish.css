@@ -1,0 +1,35 @@
+.fish-row .ore-row__data {
+  grid-template-columns: minmax(150px, 0.8fr) minmax(0, 1.5fr);
+}
+
+.ore-badge[data-type="common"] {
+  background: rgba(255, 255, 255, 0.07);
+  color: #c1cfd9;
+}
+
+.ore-badge[data-type="uncommon"] {
+  background: rgba(141, 227, 177, 0.14);
+  color: var(--green);
+}
+
+.ore-badge[data-type="rare"] {
+  background: rgba(100, 201, 239, 0.14);
+  color: var(--corpus);
+}
+
+.ore-badge[data-type="legendary"] {
+  border: 1px solid rgba(242, 184, 107, 0.4);
+  background: rgba(242, 184, 107, 0.13);
+  color: var(--amber);
+}
+
+.fish-badge-time {
+  background: rgba(180, 168, 255, 0.13);
+  color: var(--violet);
+}
+
+@media (max-width: 760px) {
+  .fish-row .ore-row__data {
+    grid-template-columns: 1fr;
+  }
+}
