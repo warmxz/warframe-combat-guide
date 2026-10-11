@@ -308,17 +308,16 @@
   line-height: 1.2;
 }
 
-.ore-name-zh {
+.ore-name-en {
   color: var(--text);
   font-size: 1rem;
   font-weight: 800;
 }
 
-.ore-name-en {
-  color: var(--dim);
-  font-size: 0.76rem;
+.ore-name-zh {
+  color: var(--cyan);
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
 }
 
 .ore-row__badges {
