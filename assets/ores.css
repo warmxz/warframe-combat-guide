@@ -299,12 +299,26 @@
 }
 
 .ore-row__name h4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
   margin: 0;
-  overflow: hidden;
   font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+.ore-name-zh {
+  color: var(--text);
   font-size: 1rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-weight: 800;
+}
+
+.ore-name-en {
+  color: var(--dim);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .ore-row__badges {
