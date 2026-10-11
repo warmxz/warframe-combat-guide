@@ -101,7 +101,38 @@ button {
 .app-shell {
   width: min(1240px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 28px 0 38px;
+  padding: 18px 0 38px;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  color: var(--dim);
+  font-size: 0.76rem;
+}
+
+.top-nav a {
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(13, 24, 38, 0.72);
+  color: var(--muted);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.top-nav a:hover,
+.top-nav a.is-active {
+  border-color: var(--cyan);
+  background: rgba(114, 221, 255, 0.1);
+  color: var(--text);
+}
+
+.top-nav span {
+  margin-left: auto;
+  color: var(--dim);
 }
 
 .panel-cut {
