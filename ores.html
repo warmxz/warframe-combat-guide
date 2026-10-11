@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07101b">
+  <meta name="author" content="WarMXZ">
+  <meta name="description" content="Warframe 国际服矿采篇：地球、金星、火卫二全矿石与宝石获取方式、工具要求和 Bilibili 采集视频。">
+  <title>Warframe 矿采篇｜全矿石获取速查</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/ores.css">
+</head>
+<body>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <nav class="top-nav" aria-label="站点导航">
+      <a href="index.html">作战篇 01</a>
+      <a class="is-active" href="ores.html">矿采篇</a>
+      <span>WarMXZ 制作</span>
+    </nav>
+
+    <header class="ore-hero panel-cut">
+      <div>
+        <div class="eyebrow"><span class="eyebrow__dot"></span>WARFRAME / MINING ARCHIVE / VOL. 01</div>
+        <h1>矿采篇 <span>全矿石速查</span></h1>
+        <p>44 种采矿类物品，按地球、金星、火卫二分组。每种矿物都标注矿脉、获取来源、工具要求和区域采集视频。</p>
+      </div>
+      <div class="ore-hero__stats" aria-label="矿采数据概览">
+        <div><strong id="oreCount">—</strong><span>矿石与宝石</span></div>
+        <div><strong>3</strong><span>开放区域</span></div>
+        <div><strong>30</strong><span>种原矿/原石</span></div>
+      </div>
+    </header>
+
+    <section class="ore-quick panel-cut" aria-labelledby="ore-quick-title">
+      <div>
+        <span class="section-kicker">READ FIRST / 采集规则</span>
+        <h2 id="ore-quick-title">认颜色，比记名字重要</h2>
+      </div>
+      <div class="ore-quick__grid">
+        <div><strong>红 / 黄矿脉</strong><span>出金属矿与可精炼材料；每张地图的金属矿各自独立。</span></div>
+        <div><strong>蓝矿脉</strong><span>出宝石与稀有原石；稀有矿需要高级矿枪或太阳点等离子钻。</span></div>
+        <div><strong>精炼物品</strong><span>先买蓝图，再到铸造厂加工；不同区域找不同商人。</span></div>
+      </div>
+    </section>
+
+    <section class="ore-zones" aria-labelledby="ore-zones-title">
+      <div class="section-heading section-heading--compact">
+        <div>
+          <span class="section-kicker">01 / ZONES</span>
+          <h2 id="ore-zones-title">区域采集路线</h2>
+        </div>
+        <p>每个区域先看一条路线视频，再按矿物卡查具体来源。</p>
+      </div>
+      <div class="ore-zone-grid" id="oreZoneGrid"></div>
+    </section>
+
+    <section class="ore-archive" aria-labelledby="ore-archive-title">
+      <div class="section-heading section-heading--compact">
+        <div>
+          <span class="section-kicker">02 / ORE LIST</span>
+          <h2 id="ore-archive-title">矿石与宝石清单</h2>
+        </div>
+        <p>按区域、矿脉颜色或关键词筛选；每一种都带区域视频和精确搜索入口。</p>
+      </div>
+
+      <div class="ore-toolbar panel-cut" role="search">
+        <label class="search-box" for="oreSearch">
+          <span class="search-box__label">搜索</span>
+          <span class="search-box__icon" aria-hidden="true">⌁</span>
+          <input id="oreSearch" type="search" placeholder="输入矿物名、区域、来源…" autocomplete="off">
+        </label>
+        <div class="ore-filter-row" id="oreRegionFilters" aria-label="按区域筛选"></div>
+        <div class="ore-filter-row" id="oreTypeFilters" aria-label="按类型筛选"></div>
+        <div class="ore-toolbar__foot">
+          <span id="oreResultCount" aria-live="polite"></span>
+          <button class="ghost-button" id="resetOreFilters" type="button">清除筛选</button>
+        </div>
+      </div>
+
+      <div class="ore-list" id="oreList"></div>
+      <div class="empty-state" id="oreEmptyState" hidden>
+        <strong>没有匹配的矿物</strong>
+        <span>试试输入英文矿物名，或清除筛选。</span>
+      </div>
+    </section>
+
+    <section class="ore-video-strip panel-cut" aria-labelledby="ore-video-title">
+      <div>
+        <span class="section-kicker">03 / WATCH</span>
+        <h2 id="ore-video-title">三张图一次看完</h2>
+        <p>如果只想先记路线，看总览视频；第一次采矿先看 3 分钟入门。</p>
+      </div>
+      <div class="ore-video-strip__links" id="oreVideoLinks"></div>
+    </section>
+
+    <section class="credits-section panel-cut" aria-labelledby="credits-title">
+      <div class="credits-section__body">
+        <span class="section-kicker">FIELD NOTES / AUTHOR</span>
+        <h2 id="credits-title">制作人：WarMXZ</h2>
+        <p>负责《星际战甲》作战与矿采资料整理、B 站视频筛选与页面维护。</p>
+      </div>
+      <a class="qq-contact" href="https://wpa.qq.com/msgrd?v=3&amp;uin=834178659&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer" aria-label="通过 QQ 联系制作人 WarMXZ，QQ 号 834178659">
+        <span class="qq-contact__label">CONTACT / QQ</span>
+        <strong>834178659</strong>
+        <small>点击发起 QQ 会话 ↗</small>
+      </a>
+    </section>
+
+    <footer class="site-footer">
+      <p>资料按 PC 国际服现行开放区域结构整理；热修可能调整掉落、工具限制或商人库存。视频链接来自 Bilibili，作者与发布日期已标注。</p>
+      <p>制作人：<strong>WarMXZ</strong> · QQ：<a href="https://wpa.qq.com/msgrd?v=3&amp;uin=834178659&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer">834178659</a></p>
+      <p>更新日期：<time datetime="2026-10-11">2026-10-11</time></p>
+    </footer>
+  </div>
+
+  <script src="data/ores.js"></script>
+  <script src="assets/ores.js"></script>
+</body>
+</html>
