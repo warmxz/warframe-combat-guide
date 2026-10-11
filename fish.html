@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07101b">
+  <meta name="author" content="WarMXZ">
+  <meta name="description" content="Warframe 国际服捕鱼篇：夜灵平原、奥布山谷、魔胎之境与双衍王境全鱼类中英对照、时间、鱼饵和 Bilibili 视频。">
+  <title>Warframe 捕鱼篇｜全鱼类获取速查</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/ores.css">
+  <link rel="stylesheet" href="assets/fish.css">
+</head>
+<body>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <nav class="top-nav" aria-label="站点导航">
+      <a href="index.html">作战篇 01</a>
+      <a href="ores.html">矿采篇</a>
+      <a class="is-active" href="fish.html">捕鱼篇</a>
+      <span>WarMXZ 制作</span>
+    </nav>
+
+    <header class="ore-hero panel-cut">
+      <div>
+        <div class="eyebrow"><span class="eyebrow__dot"></span>WARFRAME / FISHING ARCHIVE / VOL. 01</div>
+        <h1>捕鱼篇 <span>全鱼类速查</span></h1>
+        <p>44 种正式鱼类，英文名在前、中文名在后。按地球、金星、火卫二和双衍王境分组，标注时间/温度、栖息水域、稀有度和区域捕鱼视频。</p>
+      </div>
+      <div class="ore-hero__stats" aria-label="捕鱼数据概览">
+        <div><strong id="fishCount">—</strong><span>正式鱼类</span></div>
+        <div><strong>4</strong><span>捕鱼区域</span></div>
+        <div><strong>4</strong><span>区域视频</span></div>
+      </div>
+    </header>
+
+    <section class="ore-quick panel-cut" aria-labelledby="fish-quick-title">
+      <div>
+        <span class="section-kicker">READ FIRST / 捕鱼规则</span>
+        <h2 id="fish-quick-title">先看时间，再下鱼饵</h2>
+      </div>
+      <div class="ore-quick__grid">
+        <div><strong>时间 / 温度</strong><span>夜灵平原分白天、夜晚；奥布山谷分暖期、冷期；魔胎之境看 Fass / Vome。</span></div>
+        <div><strong>鱼饵</strong><span>普通鱼可裸钓；稀有鱼先用对应鱼饵，再寻找水面热点。</span></div>
+        <div><strong>中文顺序</strong><span>名称统一显示为 English 中文，例如 Mawfish 喉鱼。</span></div>
+      </div>
+    </section>
+
+    <section class="ore-zones" aria-labelledby="fish-zones-title">
+      <div class="section-heading section-heading--compact">
+        <div>
+          <span class="section-kicker">01 / ZONES</span>
+          <h2 id="fish-zones-title">区域捕鱼路线</h2>
+        </div>
+        <p>每个区域先看一条路线视频，再按鱼类卡查具体条件。</p>
+      </div>
+      <div class="ore-zone-grid" id="fishZoneGrid"></div>
+    </section>
+
+    <section class="ore-archive" aria-labelledby="fish-archive-title">
+      <div class="section-heading section-heading--compact">
+        <div>
+          <span class="section-kicker">02 / FISH LIST</span>
+          <h2 id="fish-archive-title">鱼类清单</h2>
+        </div>
+        <p>支持中文名、英文名、区域与稀有度筛选；每一种都带区域视频和精确搜索入口。</p>
+      </div>
+
+      <div class="ore-toolbar panel-cut" role="search">
+        <label class="search-box" for="fishSearch">
+          <span class="search-box__label">搜索</span>
+          <span class="search-box__icon" aria-hidden="true">⌁</span>
+          <input id="fishSearch" type="search" placeholder="输入鱼类名、区域、时间或鱼饵…" autocomplete="off">
+        </label>
+        <div class="ore-filter-row" id="fishRegionFilters" aria-label="按区域筛选"></div>
+        <div class="ore-filter-row" id="fishRarityFilters" aria-label="按稀有度筛选"></div>
+        <div class="ore-toolbar__foot">
+          <span id="fishResultCount" aria-live="polite"></span>
+          <button class="ghost-button" id="resetFishFilters" type="button">清除筛选</button>
+        </div>
+      </div>
+
+      <div class="ore-list" id="fishList"></div>
+      <div class="empty-state" id="fishEmptyState" hidden>
+        <strong>没有匹配的鱼类</strong>
+        <span>试试输入英文鱼类名，或清除筛选。</span>
+      </div>
+    </section>
+
+    <section class="ore-video-strip panel-cut" aria-labelledby="fish-video-title">
+      <div>
+        <span class="section-kicker">03 / WATCH</span>
+        <h2 id="fish-video-title">捕鱼入门与鱼饵</h2>
+        <p>先看 5 分钟捕鱼入门；鱼饵获取单独看一条，避免钓稀有鱼时空跑。</p>
+      </div>
+      <div class="ore-video-strip__links" id="fishVideoLinks"></div>
+    </section>
+
+    <section class="credits-section panel-cut" aria-labelledby="credits-title">
+      <div class="credits-section__body">
+        <span class="section-kicker">FIELD NOTES / AUTHOR</span>
+        <h2 id="credits-title">制作人：WarMXZ</h2>
+        <p>负责《星际战甲》作战、矿采与捕鱼资料整理、B 站视频筛选与页面维护。</p>
+      </div>
+      <a class="qq-contact" href="https://wpa.qq.com/msgrd?v=3&amp;uin=834178659&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer" aria-label="通过 QQ 联系制作人 WarMXZ，QQ 号 834178659">
+        <span class="qq-contact__label">CONTACT / QQ</span>
+        <strong>834178659</strong>
+        <small>点击发起 QQ 会话 ↗</small>
+      </a>
+    </section>
+
+    <footer class="site-footer">
+      <p>资料按 PC 国际服现行开放区域结构整理；热修可能调整鱼类刷新、鱼饵或商人库存。视频链接来自 Bilibili，作者与发布日期已标注。</p>
+      <p>制作人：<strong>WarMXZ</strong> · QQ：<a href="https://wpa.qq.com/msgrd?v=3&amp;uin=834178659&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer">834178659</a></p>
+      <p>更新日期：<time datetime="2026-10-12">2026-10-12</time></p>
+    </footer>
+  </div>
+
+  <script src="data/fish.js"></script>
+  <script src="assets/fish.js"></script>
+</body>
+</html>
