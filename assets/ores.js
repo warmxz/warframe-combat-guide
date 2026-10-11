@@ -96,7 +96,7 @@
     if (ore.type === "refined") classes.push("is-refined");
     return '<article class="' + classes.join(" ") + '">' +
       '<div class="ore-row__name">' +
-        '<h4><span class="ore-name-zh">' + escapeHtml(ore.zh) + '</span><span class="ore-name-en">' + escapeHtml(ore.name) + '</span></h4>' +
+        '<h4><span class="ore-name-en">' + escapeHtml(ore.name) + '</span><span class="ore-name-zh">' + escapeHtml(ore.zh) + '</span></h4>' +
         '<div class="ore-row__badges">' +
           '<span class="ore-badge ore-badge--zone">' + escapeHtml(zone.name) + '</span>' +
           '<span class="ore-badge" data-type="' + escapeHtml(ore.type) + '">' + escapeHtml(typeLabel(ore.type)) + '</span>' +
