@@ -37,7 +37,7 @@
   }
 
   function searchUrl(ore) {
-    return "https://search.bilibili.com/video?keyword=" + encodeURIComponent("Warframe " + ore.name + " 矿石 采集");
+    return "https://search.bilibili.com/video?keyword=" + encodeURIComponent("Warframe " + ore.zh + " " + ore.name + " 矿石 采集");
   }
 
   function typeLabel(type) {
@@ -83,7 +83,7 @@
     if (state.region !== "all" && ore.region !== state.region) return false;
     if (state.type !== "all" && ore.type !== state.type) return false;
     if (state.search) {
-      const blob = [ore.name, zoneMap[ore.region].name, zoneMap[ore.region].planet, typeLabel(ore.type), ore.source, ore.tool, ore.refine].join(" ").toLowerCase();
+      const blob = [ore.zh, ore.name, zoneMap[ore.region].name, zoneMap[ore.region].planet, typeLabel(ore.type), ore.source, ore.tool, ore.refine].join(" ").toLowerCase();
       if (blob.indexOf(state.search.toLowerCase()) === -1) return false;
     }
     return true;
@@ -96,7 +96,7 @@
     if (ore.type === "refined") classes.push("is-refined");
     return '<article class="' + classes.join(" ") + '">' +
       '<div class="ore-row__name">' +
-        '<h4>' + escapeHtml(ore.name) + '</h4>' +
+        '<h4><span class="ore-name-zh">' + escapeHtml(ore.zh) + '</span><span class="ore-name-en">' + escapeHtml(ore.name) + '</span></h4>' +
         '<div class="ore-row__badges">' +
           '<span class="ore-badge ore-badge--zone">' + escapeHtml(zone.name) + '</span>' +
           '<span class="ore-badge" data-type="' + escapeHtml(ore.type) + '">' + escapeHtml(typeLabel(ore.type)) + '</span>' +
