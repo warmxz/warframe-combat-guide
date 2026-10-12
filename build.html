@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07101b">
+  <meta name="author" content="WarMXZ">
+  <meta name="description" content="Warframe 配卡模拟器：战甲、主武器、副武器、近战 Mod 装备、容量、极性、等级和主要面板实时估算。">
+  <title>Warframe 配卡模拟器｜Build Lab</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/build.css">
+</head>
+<body>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <nav class="top-nav" aria-label="站点导航">
+      <a href="index.html">作战篇</a>
+      <a href="ores.html">矿采篇</a>
+      <a href="fish.html">捕鱼篇</a>
+      <a class="is-active" href="build.html">配卡模拟</a>
+      <span>WarMXZ 制作</span>
+    </nav>
+
+    <header class="sim-hero panel-cut">
+      <div>
+        <div class="eyebrow"><span class="eyebrow__dot"></span>WARFRAME / BUILD LAB / BETA</div>
+        <h1>配卡模拟器 <span>Build Lab</span></h1>
+        <p>选择战甲或武器，装备 Mod、调整等级与极性，实时查看容量和主要面板。当前版本为通用估算，不处理紫卡、赋能、条件触发和元素合并顺序。</p>
+      </div>
+      <div class="sim-hero__stats">
+        <div><strong id="simItemCount">—</strong><span>可选装备</span></div>
+        <div><strong id="simModCount">—</strong><span>可用 Mod</span></div>
+        <div><strong>8+1</strong><span>普通槽 + 特殊槽</span></div>
+      </div>
+    </header>
+
+    <main class="sim-main">
+      <section class="sim-picker panel-cut" aria-labelledby="sim-picker-title">
+        <div class="sim-section-head">
+          <div>
+            <span class="section-kicker">01 / EQUIPMENT</span>
+            <h2 id="sim-picker-title">选择装备</h2>
+          </div>
+          <div class="sim-category-tabs" id="simCategories"></div>
+        </div>
+        <label class="search-box" for="simItemSearch">
+          <span class="search-box__label">搜索</span>
+          <span class="search-box__icon" aria-hidden="true">⌁</span>
+          <input id="simItemSearch" type="search" placeholder="输入英文名或中文名…" autocomplete="off">
+        </label>
+        <div class="sim-item-list" id="simItemList"></div>
+      </section>
+
+      <section class="sim-builder">
+        <div class="sim-build-panel panel-cut">
+          <div class="sim-build-head">
+            <div>
+              <span class="section-kicker">02 / MOD LOADOUT</span>
+              <h2 id="simItemName">—</h2>
+              <p id="simItemMeta"></p>
+            </div>
+            <div class="sim-build-actions">
+              <button class="ghost-button" id="simPotato" type="button">土豆：开</button>
+              <button class="ghost-button" id="simSample" type="button">示例配卡</button>
+              <button class="ghost-button" id="simClear" type="button">清空</button>
+            </div>
+          </div>
+
+          <div class="sim-capacity">
+            <div class="sim-capacity__top">
+              <span>容量</span>
+              <strong id="simCapacityText">0 / 60</strong>
+            </div>
+            <div class="sim-capacity__track"><span id="simCapacityBar"></span></div>
+            <small id="simCapacityNote">选择装备后开始配卡</small>
+          </div>
+
+          <div class="sim-slots" id="simSlots"></div>
+        </div>
+
+        <aside class="sim-stats-panel panel-cut">
+          <span class="section-kicker">03 / LIVE STATS</span>
+          <h2>实时面板</h2>
+          <div id="simStats" class="sim-stats"></div>
+          <div class="sim-stat-note">估算值只用于比较配卡方向；实际伤害受敌人护甲、元素组合、触发状态和技能影响。</div>
+        </aside>
+
+        <div class="sim-mod-panel panel-cut">
+          <div class="sim-section-head">
+            <div>
+              <span class="section-kicker">04 / MOD BROWSER</span>
+              <h2 id="simModTitle">Mod 库</h2>
+              <p id="simModHint">先点选一个槽位，再选择 Mod。</p>
+            </div>
+            <label class="search-box sim-mod-search" for="simModSearch">
+              <span class="search-box__label">搜索</span>
+              <input id="simModSearch" type="search" placeholder="搜索 Mod…" autocomplete="off">
+            </label>
+          </div>
+          <div class="sim-mod-list" id="simModList"></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="credits-section panel-cut" aria-labelledby="credits-title">
+      <div class="credits-section__body">
+        <span class="section-kicker">FIELD NOTES / AUTHOR</span>
+        <h2 id="credits-title">制作人：WarMXZ</h2>
+        <p>负责《星际战甲》资料整理、工具开发、B 站视频筛选与页面维护。</p>
+      </div>
+      <a class="qq-contact" href="https://wpa.qq.com/msgrd?v=3&amp;uin=834178659&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer" aria-label="通过 QQ 联系制作人 WarMXZ，QQ 号 834178659">
+        <span class="qq-contact__label">CONTACT / QQ</span>
+        <strong>834178659</strong>
+        <small>点击发起 QQ 会话 ↗</small>
+      </a>
+    </section>
+
+    <footer class="site-footer">
+      <p>基础装备与 Mod 数据来自公开 Warframe 数据；模拟结果为通用估算，热修后可能产生偏差。请以游戏内实际面板为准。</p>
+      <p>制作人：<strong>WarMXZ</strong> · QQ：<a href="https://wpa.qq.com/msgrd?v=3&amp;uin=834178659&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer">834178659</a></p>
+      <p>更新日期：<time datetime="2026-10-12">2026-10-12</time></p>
+    </footer>
+  </div>
+
+  <script src="data/build-sim.js"></script>
+  <script src="assets/build.js"></script>
+</body>
+</html>
