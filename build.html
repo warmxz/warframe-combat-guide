@@ -27,7 +27,7 @@
       <div>
         <div class="eyebrow"><span class="eyebrow__dot"></span>WARFRAME / BUILD LAB / BETA</div>
         <h1>配卡模拟器 <span>Build Lab</span></h1>
-        <p>选择战甲或武器，装备 Mod、调整等级与极性，实时查看容量和主要面板。当前版本为通用估算，不处理紫卡、赋能、条件触发和元素合并顺序。</p>
+        <p>选择战甲或武器，装备 Mod、调整等级与极性，实时查看容量、主要面板与武器异常状态估算。状态结果用于比较配卡方向，不处理紫卡、赋能和条件触发。</p>
       </div>
       <div class="sim-hero__stats">
         <div><strong id="simItemCount">—</strong><span>可选装备</span></div>
@@ -84,13 +84,13 @@
           <span class="section-kicker">03 / LIVE STATS</span>
           <h2>实时面板</h2>
           <div id="simStats" class="sim-stats"></div>
-          <div class="sim-stat-note">估算值只用于比较配卡方向；实际伤害受敌人护甲、元素组合、触发状态和技能影响。</div>
+          <div class="sim-stat-note">基础面板为通用估算；武器异常状态可在下方单独调整目标与持续射击窗口。</div>
         </aside>
 
         <div class="sim-mod-panel panel-cut">
           <div class="sim-section-head">
             <div>
-              <span class="section-kicker">04 / MOD BROWSER</span>
+              <span class="section-kicker">05 / MOD BROWSER</span>
               <h2 id="simModTitle">Mod 库</h2>
               <p id="simModHint">先点选一个槽位，再选择 Mod。</p>
             </div>
@@ -101,6 +101,45 @@
           </div>
           <div class="sim-mod-list" id="simModList"></div>
         </div>
+
+        <section class="sim-status-panel panel-cut" id="simStatusPanel" aria-labelledby="simStatusTitle" hidden>
+          <div class="sim-section-head">
+            <div>
+              <span class="section-kicker">04 / STATUS LAB</span>
+              <h2 id="simStatusTitle">异常状态估算</h2>
+              <p>根据最终伤害占比、触发几率、多重射击与射速计算。</p>
+            </div>
+          </div>
+
+          <div class="sim-status-controls">
+            <label for="simStatusFaction">
+              <span>敌人阵营</span>
+              <select id="simStatusFaction">
+                <option value="grineer">Grineer</option>
+                <option value="corpus">Corpus</option>
+                <option value="infested">Infested</option>
+                <option value="orokin">Orokin</option>
+              </select>
+            </label>
+            <label for="simStatusArmor">
+              <span>当前护甲</span>
+              <input id="simStatusArmor" type="number" min="0" max="100000" step="10" value="500">
+            </label>
+            <label for="simStatusWindow">
+              <span>持续射击（秒）</span>
+              <input id="simStatusWindow" type="number" min="0.5" max="20" step="0.5" value="3">
+            </label>
+          </div>
+
+          <div class="sim-status-summary" id="simStatusSummary"></div>
+          <div class="sim-status-list" id="simStatusList"></div>
+
+          <div class="sim-status-method">
+            <strong>估算口径</strong>
+            <p>按持续射击、状态伤害可叠层的稳态计算；基础元素按 Mod 槽位顺序合并，触发类型再按最终伤害占比分配。未计入生命/护甲类型抗性、暴击与爆头、强制触发、紫卡、赋能、技能、特殊武器多模式和敌人实际随机序列。</p>
+            <p>会读取已装备 Mod 中的触发几率、状态伤害、状态持续时间和对应阵营伤害。护甲后的状态总伤请在游戏中结合敌方抗性复核。</p>
+          </div>
+        </section>
       </section>
     </main>
 
@@ -120,7 +159,7 @@
     <footer class="site-footer">
       <p>基础装备与 Mod 数据来自公开 Warframe 数据；模拟结果为通用估算，热修后可能产生偏差。请以游戏内实际面板为准。</p>
       <p>制作人：<strong>WarMXZ</strong> · QQ：<a href="https://wpa.qq.com/msgrd?v=3&amp;uin=834178659&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer">834178659</a></p>
-      <p>更新日期：<time datetime="2026-10-12">2026-10-12</time></p>
+      <p>更新日期：<time datetime="2026-11-02">2026-11-02</time></p>
     </footer>
   </div>
 
