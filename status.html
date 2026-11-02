@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07101b">
+  <meta name="author" content="WarMXZ">
+  <meta name="description" content="Warframe 异常状态独立计算器：输入伤害构成、触发几率、多重射击、射速和敌人参数，自动计算异常占比、持续伤害、病毒与腐蚀层数。">
+  <title>Warframe 异常状态计算器｜Status Lab</title>
+  <link rel="stylesheet" href="assets/styles.css?v=20261102b">
+  <link rel="stylesheet" href="assets/status.css?v=20261102b">
+</head>
+<body>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <nav class="top-nav" aria-label="站点导航">
+      <a href="index.html">作战篇</a>
+      <a href="ores.html">矿采篇</a>
+      <a href="fish.html">捕鱼篇</a>
+      <a href="build.html">配卡模拟</a>
+      <a class="is-active" href="status.html">异常状态</a>
+      <span>WarMXZ 制作</span>
+    </nav>
+
+    <header class="status-hero panel-cut">
+      <div>
+        <div class="eyebrow"><span class="eyebrow__dot"></span>WARFRAME / STATUS LAB / INDEPENDENT</div>
+        <h1>异常状态计算器 <span>Status Lab</span></h1>
+        <p>直接输入你的伤害构成和面板数据，页面会自动计算触发分布、持续伤害、状态层数与最终效果。</p>
+      </div>
+      <div class="status-hero__marker">
+        <span>INPUT</span>
+        <strong>→</strong>
+        <span>AUTO CALC</span>
+      </div>
+    </header>
+
+    <main class="status-layout">
+      <section class="status-input-panel panel-cut" aria-labelledby="status-input-title">
+        <div class="status-section-head">
+          <div>
+            <span class="section-kicker">01 / MY VALUES</span>
+            <h2 id="status-input-title">输入相关数据</h2>
+            <p>所有结果会随输入自动更新，不需要绑定配卡。</p>
+          </div>
+          <div class="status-actions">
+            <button class="ghost-button" id="statusSample" type="button">载入示例</button>
+            <button class="ghost-button" id="statusReset" type="button">清空</button>
+          </div>
+        </div>
+
+        <div class="status-control-grid">
+          <label>
+            <span>触发几率 <small>%</small></span>
+            <input id="statusChance" type="number" min="0" max="10000" step="0.1" value="0">
+          </label>
+          <label>
+            <span>多重射击 <small>x</small></span>
+            <input id="statusMultishot" type="number" min="0" max="100" step="0.01" value="1">
+          </label>
+          <label>
+            <span>攻击频率 <small>/ 秒</small></span>
+            <input id="statusRate" type="number" min="0" max="1000" step="0.01" value="1">
+          </label>
+          <label>
+            <span>状态伤害加成 <small>%</small></span>
+            <input id="statusDamageBonus" type="number" min="-100" max="10000" step="0.1" value="0">
+          </label>
+          <label>
+            <span>状态持续时间 <small>%</small></span>
+            <input id="statusDurationBonus" type="number" min="-100" max="10000" step="0.1" value="0">
+          </label>
+          <label>
+            <span>阵营伤害加成 <small>%</small></span>
+            <input id="statusFactionBonus" type="number" min="-100" max="10000" step="0.1" value="0">
+          </label>
+          <label>
+            <span>敌人阵营</span>
+            <select id="statusFaction">
+              <option value="Grineer">Grineer</option>
+              <option value="Corpus">Corpus</option>
+              <option value="Infested">Infested</option>
+              <option value="Orokin">Orokin</option>
+              <option value="其他">其他 / 无阵营加成</option>
+            </select>
+          </label>
+          <label>
+            <span>当前护甲</span>
+            <input id="statusArmor" type="number" min="0" max="100000" step="10" value="500">
+          </label>
+          <label>
+            <span>射击窗口 <small>秒</small></span>
+            <input id="statusWindow" type="number" min="0.5" max="60" step="0.5" value="3">
+          </label>
+        </div>
+
+        <div class="damage-heading">
+          <div>
+            <span class="section-kicker">DAMAGE COMPOSITION</span>
+            <h3>最终伤害构成</h3>
+          </div>
+          <p>请直接填写游戏面板中的最终伤害类型；复合元素无需再拆分。</p>
+        </div>
+
+        <div class="damage-groups">
+          <fieldset>
+            <legend>物理</legend>
+            <div class="damage-fields">
+              <label class="damage-field" data-type="impact">
+                <span>冲击 <small>Impact</small></span>
+                <input id="damage-impact" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="puncture">
+                <span>穿刺 <small>Puncture</small></span>
+                <input id="damage-puncture" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="slash">
+                <span>切割 <small>Slash</small></span>
+                <input id="damage-slash" type="number" min="0" step="0.1" value="0">
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>基础元素</legend>
+            <div class="damage-fields">
+              <label class="damage-field" data-type="heat">
+                <span>火焰 <small>Heat</small></span>
+                <input id="damage-heat" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="cold">
+                <span>冰冻 <small>Cold</small></span>
+                <input id="damage-cold" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="electricity">
+                <span>电击 <small>Electricity</small></span>
+                <input id="damage-electricity" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="toxin">
+                <span>毒素 <small>Toxin</small></span>
+                <input id="damage-toxin" type="number" min="0" step="0.1" value="0">
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="damage-group--wide">
+            <legend>复合元素</legend>
+            <div class="damage-fields damage-fields--six">
+              <label class="damage-field" data-type="blast">
+                <span>爆炸 <small>Blast</small></span>
+                <input id="damage-blast" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="radiation">
+                <span>辐射 <small>Radiation</small></span>
+                <input id="damage-radiation" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="gas">
+                <span>毒气 <small>Gas</small></span>
+                <input id="damage-gas" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="magnetic">
+                <span>磁力 <small>Magnetic</small></span>
+                <input id="damage-magnetic" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="viral">
+                <span>病毒 <small>Viral</small></span>
+                <input id="damage-viral" type="number" min="0" step="0.1" value="0">
+              </label>
+              <label class="damage-field" data-type="corrosive">
+                <span>腐蚀 <small>Corrosive</small></span>
+                <input id="damage-corrosive" type="number" min="0" step="0.1" value="0">
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="damage-total">
+          <span>当前输入总伤害</span>
+          <strong id="statusTotalDamage">0</strong>
+        </div>
+      </section>
+
+      <aside class="status-result-panel panel-cut" aria-labelledby="status-result-title">
+        <div class="status-section-head">
+          <div>
+            <span class="section-kicker">02 / LIVE RESULT</span>
+            <h2 id="status-result-title">自动计算结果</h2>
+          </div>
+          <span class="status-live"><i></i>LIVE</span>
+        </div>
+
+        <div class="status-summary" id="statusSummary"></div>
+        <div class="status-target" id="statusTarget"></div>
+        <div class="status-cards" id="statusCards"></div>
+
+        <div class="status-method">
+          <strong>计算口径</strong>
+          <p>触发类型按最终伤害构成占比分配；持续伤害按持续射击稳态计算。状态伤害加成与阵营伤害加成都会计入持续伤害，其中阵营加成按该机制的口径参与计算。</p>
+          <p>未计入生命/护甲类型抗性、暴击与爆头、强制触发、技能、紫卡、赋能及敌方实际随机序列；请将结果用于配装方向比较。</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <p>异常状态计算器为独立工具，不读取或修改配卡模拟数据。模拟结果为估算，请以游戏内实际结算为准。</p>
+      <p>制作人：<strong>WarMXZ</strong> · QQ：<a href="https://wpa.qq.com/msgrd?v=3&amp;uin=834178659&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener noreferrer">834178659</a></p>
+      <p>更新日期：<time datetime="2026-11-02">2026-11-02</time></p>
+    </footer>
+  </div>
+
+  <script src="assets/status.js?v=20261102b"></script>
+</body>
+</html>

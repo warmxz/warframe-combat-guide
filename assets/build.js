@@ -18,9 +18,6 @@
     activeSlot: 0,
     potato: true,
     combo: 3,
-    enemyArmor: 500,
-    enemyFaction: "grineer",
-    statusWindow: 3,
     itemSearch: "",
     modSearch: ""
   };
@@ -44,13 +41,7 @@
     modSearch: document.getElementById("simModSearch"),
     modList: document.getElementById("simModList"),
     itemCount: document.getElementById("simItemCount"),
-    modCount: document.getElementById("simModCount"),
-    statusPanel: document.getElementById("simStatusPanel"),
-    statusFaction: document.getElementById("simStatusFaction"),
-    statusArmor: document.getElementById("simStatusArmor"),
-    statusWindow: document.getElementById("simStatusWindow"),
-    statusSummary: document.getElementById("simStatusSummary"),
-    statusList: document.getElementById("simStatusList")
+    modCount: document.getElementById("simModCount")
   };
 
   function escapeHtml(value) {
@@ -171,8 +162,6 @@
       if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Critical Chance stacks with Combo Multiplier/i))) add("critChanceCombo", Number(m[1]));
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Critical Chance/i))) add("critChance", Number(m[1]));
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Critical Damage/i))) add("critDamage", Number(m[1]));
-      else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Status Damage/i))) add("statusDamage", Number(m[1]));
-      else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Status Duration/i))) add("statusDuration", Number(m[1]));
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Status Chance|([+-]?\d+(?:\.\d+)?)% Status/i))) add("statusChance", Number(m[1] || m[2]));
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Multishot/i))) add("multishot", Number(m[1]));
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% (?:Fire Rate|Attack Speed)/i))) add("fireRate", Number(m[1]));
@@ -190,9 +179,6 @@
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Ability Range/i))) add("abilityRange", Number(m[1]));
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Range/i))) add("range", Number(m[1]));
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% Combo Duration/i))) add("comboDuration", Number(m[1]));
-      else if ((m = s.match(/x(\d+(?:\.\d+)?)\s+Damage to (Grineer|Corpus|Infested|Orokin)/i))) {
-        add("faction" + m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase(), (Number(m[1]) - 1) * 100);
-      }
       else if ((m = s.match(/([+-]?\d+(?:\.\d+)?)% (?:<[^>]+>)?(Heat|Cold|Electricity|Toxin|Blast|Radiation|Gas|Magnetic|Viral|Corrosive|Impact|Puncture|Slash)/i))) {
         const key = m[2].toLowerCase();
         add(key, Number(m[1]));
@@ -214,14 +200,7 @@
 
   function effectSummary(mod, rank, limit) {
     const parsed = parseModStats(mod, rank);
-    const labels = Object.assign(effectLabels(), {
-      statusDamage: "状态伤害",
-      statusDuration: "状态持续时间",
-      factionGrineer: "对 Grineer 伤害",
-      factionCorpus: "对 Corpus 伤害",
-      factionInfested: "对 Infested 伤害",
-      factionOrokin: "对 Orokin 伤害"
-    });
+    const labels = effectLabels();
     const out = Object.keys(parsed).map(function (key) {
       const val = parsed[key];
       if (!val) return "";
@@ -376,184 +355,6 @@
       efficiency: 100 + (eff.abilityEfficiency || 0),
       range: 100 + (eff.abilityRange || 0)
     };
-  }
-
-  function statusEffectMeta() {
-    return {
-      impact: { name: "冲击", en: "Impact", duration: 1, effect: "短暂硬直，打断敌人的当前动作。" },
-      puncture: { name: "穿刺", en: "Puncture", duration: 6, effect: "削弱目标输出，使其造成的伤害降低。" },
-      slash: {
-        name: "切割", en: "Slash", duration: 6, ticks: 6, coefficient: 0.35,
-        effect: "流血持续伤害，以真实伤害结算并绕过护甲。"
-      },
-      cold: { name: "冰冻", en: "Cold", duration: 6, effect: "降低移动与攻击速度，连续施加可进一步冻结目标。" },
-      heat: {
-        name: "火焰", en: "Heat", duration: 6, ticks: 6, coefficient: 0.5,
-        effect: "灼烧持续伤害并使目标慌乱；叠加期间可最多削减 50% 护甲。"
-      },
-      electricity: {
-        name: "电击", en: "Electricity", duration: 6, ticks: 6, coefficient: 0.5,
-        effect: "感电持续伤害，并可向附近目标传导。"
-      },
-      toxin: {
-        name: "毒素", en: "Toxin", duration: 6, ticks: 6, coefficient: 0.5,
-        effect: "毒素持续伤害，可直接作用于生命并绕过护盾。"
-      },
-      blast: {
-        name: "爆炸", en: "Blast", duration: 1.5, ticks: 1, coefficient: 0.3,
-        effect: "短暂延迟后爆炸，对周围目标造成范围伤害。"
-      },
-      radiation: { name: "辐射", en: "Radiation", duration: 6, effect: "扰乱目标，使敌人短时间攻击友军。" },
-      gas: {
-        name: "毒气", en: "Gas", duration: 6, ticks: 6, coefficient: 0.5,
-        effect: "生成毒气云，对范围内目标持续造成毒素伤害。"
-      },
-      magnetic: { name: "磁力", en: "Magnetic", duration: 6, effect: "压制护盾并阻碍护盾恢复，提高对护盾的压力。" },
-      viral: { name: "病毒", en: "Viral", duration: 6, effect: "叠加后提高目标受到的生命伤害。" },
-      corrosive: { name: "腐蚀", en: "Corrosive", duration: 8, effect: "按层数削减护甲，最高可削减 80%。" }
-    };
-  }
-
-  function factionBonus(eff) {
-    const key = state.enemyFaction.charAt(0).toUpperCase() + state.enemyFaction.slice(1);
-    return eff["faction" + key] || 0;
-  }
-
-  function calculateStatusEffects(final, eff) {
-    const meta = statusEffectMeta();
-    const durationFactor = Math.max(0, 1 + (eff.statusDuration || 0) / 100);
-    const factionMult = 1 + factionBonus(eff) / 100;
-    const damageFactor = (1 + (eff.statusDamage || 0) / 100) * factionMult * factionMult;
-    const statusPerShot = final.statusChance / 100 * final.multishot;
-    const statusPerSecond = statusPerShot * final.fireRate;
-    const weighted = Object.keys(final.damage).filter(function (key) {
-      return meta[key] && final.damage[key] > 0.0001;
-    }).map(function (key) {
-      return { key: key, damage: final.damage[key] };
-    });
-    const totalWeight = weighted.reduce(function (sum, item) { return sum + item.damage; }, 0);
-    let statusDps = 0;
-    const entries = weighted.map(function (item) {
-      const effect = meta[item.key];
-      const share = totalWeight > 0 ? item.damage / totalWeight : 0;
-      const procsPerSecond = statusPerSecond * share;
-      const duration = (effect.duration || 0) * durationFactor;
-      const ticks = effect.coefficient ? effect.ticks * durationFactor : 0;
-      const perTick = effect.coefficient ? final.totalDamage * effect.coefficient * damageFactor : 0;
-      const perProc = perTick * ticks;
-      const dotDps = procsPerSecond * perProc;
-      statusDps += dotDps;
-      return {
-        key: item.key,
-        name: effect.name,
-        en: effect.en,
-        effect: effect.effect,
-        share: share,
-        procsPerSecond: procsPerSecond,
-        duration: duration,
-        ticks: ticks,
-        perTick: perTick,
-        perProc: perProc,
-        dotDps: dotDps,
-        expectedStacks: procsPerSecond * state.statusWindow
-      };
-    }).sort(function (a, b) { return b.share - a.share; });
-
-    const viral = entries.find(function (entry) { return entry.key === "viral"; });
-    const corrosive = entries.find(function (entry) { return entry.key === "corrosive"; });
-    const heat = entries.find(function (entry) { return entry.key === "heat"; });
-    const viralStacks = clamp(viral ? viral.expectedStacks : 0, 0, 10);
-    const corrosiveStacks = clamp(corrosive ? corrosive.expectedStacks : 0, 0, 10);
-    const viralMult = viralStacks <= 0 ? 1 : viralStacks <= 1 ? 1 + viralStacks : 2 + 0.25 * (viralStacks - 1);
-    const corrosiveReduction = Math.min(80, corrosiveStacks * 26);
-    const heatReduction = heat && heat.expectedStacks >= 0.5 ? 50 : 0;
-    const remainingArmorFactor = (1 - corrosiveReduction / 100) * (1 - heatReduction / 100);
-    const effectiveArmor = Math.max(0, state.enemyArmor) * remainingArmorFactor;
-    const directDps = final.dps * factionMult;
-
-    return {
-      entries: entries,
-      statusPerShot: statusPerShot,
-      statusPerSecond: statusPerSecond,
-      statusDps: statusDps,
-      totalDps: directDps + statusDps,
-      viralStacks: viralStacks,
-      viralMult: viralMult,
-      corrosiveStacks: corrosiveStacks,
-      corrosiveReduction: corrosiveReduction,
-      heatReduction: heatReduction,
-      effectiveArmor: effectiveArmor,
-      factionMult: factionMult,
-      durationFactor: durationFactor,
-      damageFactor: damageFactor
-    };
-  }
-
-  function effectValue(entry, status) {
-    if (entry.ticks > 0) return "每跳 " + fmt(entry.perTick, 0) + " · " + fmt(entry.ticks, 1) + " 跳";
-    if (entry.key === "viral") {
-      return fmt(status.viralStacks, 1) + " 层 · 生命伤害 ×" + fmt(status.viralMult, 2);
-    }
-    if (entry.key === "corrosive") {
-      return fmt(status.corrosiveStacks, 1) + " 层 · 护甲 -" + fmt(status.corrosiveReduction, 1) + "%";
-    }
-    if (entry.key === "heat") return "护甲削减上限 50%";
-    if (entry.key === "puncture") return "目标输出 -40%";
-    if (entry.key === "cold") return "移动与攻速 -50%";
-    if (entry.key === "impact") return "短暂硬直";
-    return "控制 / 辅助效果";
-  }
-
-  function renderStatus() {
-    if (!els.statusPanel) return;
-    if (!state.item || state.category === "warframe") {
-      els.statusPanel.hidden = true;
-      return;
-    }
-
-    els.statusPanel.hidden = false;
-    if (els.statusFaction && document.activeElement !== els.statusFaction) els.statusFaction.value = state.enemyFaction;
-    if (els.statusArmor && document.activeElement !== els.statusArmor) els.statusArmor.value = state.enemyArmor;
-    if (els.statusWindow && document.activeElement !== els.statusWindow) els.statusWindow.value = state.statusWindow;
-
-    const eff = aggregateEffects();
-    const final = computeWeaponStats(state.item, eff, true);
-    const status = calculateStatusEffects(final, eff);
-    const factionName = { grineer: "Grineer", corpus: "Corpus", infested: "Infested", orokin: "Orokin" }[state.enemyFaction] || state.enemyFaction;
-    const factionText = factionBonus(eff) ? "阵营 Mod ×" + fmt(status.factionMult, 2) : "无阵营 Mod";
-    const armorDelta = Math.max(0, state.enemyArmor) - status.effectiveArmor;
-
-    els.statusSummary.innerHTML =
-      '<div class="sim-status-metric"><span>每发触发</span><strong>' + fmt(status.statusPerShot, 2) + '</strong><small>次 / 发</small></div>' +
-      '<div class="sim-status-metric"><span>每秒触发</span><strong>' + fmt(status.statusPerSecond, 2) + '</strong><small>次 / 秒</small></div>' +
-      '<div class="sim-status-metric"><span>持续状态 DPS</span><strong>' + fmt(status.statusDps, 0) + '</strong><small>稳态理论值</small></div>' +
-      '<div class="sim-status-metric"><span>综合 DPS</span><strong>' + fmt(status.totalDps, 0) + '</strong><small>直伤 + 状态</small></div>' +
-      '<div class="sim-status-target">' +
-        '<span>目标：' + escapeHtml(factionName) + ' · ' + escapeHtml(factionText) + '</span>' +
-        '<span>当前护甲 ' + fmt(state.enemyArmor, 0) + ' → 预计 ' + fmt(status.effectiveArmor, 0) +
-          (armorDelta > 0.01 ? '（-' + fmt(armorDelta, 0) + '）' : '') + '</span>' +
-      '</div>' +
-      '<div class="sim-status-target">' +
-        '<span>约 ' + fmt(state.statusWindow, 1) + ' 秒后：病毒 ' + fmt(status.viralStacks, 1) +
-          ' 层（生命伤害 ×' + fmt(status.viralMult, 2) + '）</span>' +
-        '<span>腐蚀 ' + fmt(status.corrosiveStacks, 1) + ' 层（护甲 -' + fmt(status.corrosiveReduction, 1) + '%）</span>' +
-      '</div>';
-
-    els.statusList.innerHTML = status.entries.map(function (entry) {
-      return '<article class="sim-status-card" data-status="' + escapeHtml(entry.key) + '">' +
-        '<div class="sim-status-card__head">' +
-          '<div><strong>' + escapeHtml(entry.name) + '</strong><small>' + escapeHtml(entry.en) + ' · ' + fmt(entry.share * 100, 1) + '% 触发占比</small></div>' +
-          '<b>' + fmt(entry.procsPerSecond, 2) + ' 次/秒</b>' +
-        '</div>' +
-        '<div class="sim-status-card__bar"><span style="width:' + clamp(entry.share * 100, 0, 100) + '%"></span></div>' +
-        '<div class="sim-status-card__facts">' +
-          '<span><em>状态数值</em><b>' + escapeHtml(effectValue(entry, status)) + '</b></span>' +
-          '<span><em>持续时间</em><b>' + fmt(entry.duration, 1) + 's</b></span>' +
-          (entry.dotDps > 0 ? '<span><em>单次总伤</em><b>' + fmt(entry.perProc, 0) + '</b></span>' : '') +
-        '</div>' +
-        '<p>' + escapeHtml(entry.effect) + '</p>' +
-      '</article>';
-    }).join("") || '<div class="empty-state"><strong>没有可触发的异常状态</strong><span>当前武器没有有效伤害构成或触发几率。</span></div>';
   }
 
   function statRow(label, base, final, unit, digits) {
@@ -719,7 +520,6 @@
     renderSlots();
     renderStats();
     renderModList();
-    renderStatus();
   }
 
   function renderItemList() {
@@ -800,10 +600,7 @@
         slots: state.slots,
         slotPolarities: state.slotPolarities,
         potato: state.potato,
-        combo: state.combo,
-        enemyArmor: state.enemyArmor,
-        enemyFaction: state.enemyFaction,
-        statusWindow: state.statusWindow
+        combo: state.combo
       }));
     } catch (e) {}
   }
@@ -822,10 +619,6 @@
       state.slotPolarities = state.slotPolarities.map(function (fallback, i) { return savedPol[i] || fallback; });
       state.potato = saved.potato !== false;
       state.combo = saved.combo || 3;
-      const savedArmor = Number(saved.enemyArmor);
-      state.enemyArmor = Number.isFinite(savedArmor) ? clamp(savedArmor, 0, 100000) : 500;
-      state.enemyFaction = ["grineer", "corpus", "infested", "orokin"].indexOf(saved.enemyFaction) !== -1 ? saved.enemyFaction : "grineer";
-      state.statusWindow = clamp(Number(saved.statusWindow) || 3, 0.5, 20);
       return true;
     } catch (e) { return false; }
   }
@@ -835,31 +628,6 @@
   if (els.potato) els.potato.addEventListener("click", function () { state.potato = !state.potato; renderAllBuild(); save(); });
   if (els.sample) els.sample.addEventListener("click", sampleBuild);
   if (els.clear) els.clear.addEventListener("click", clearBuild);
-  if (els.statusFaction) els.statusFaction.addEventListener("change", function (e) {
-    state.enemyFaction = e.target.value;
-    renderStatus();
-    save();
-  });
-  if (els.statusArmor) els.statusArmor.addEventListener("input", function (e) {
-    state.enemyArmor = clamp(Number(e.target.value) || 0, 0, 100000);
-    renderStatus();
-  });
-  if (els.statusArmor) els.statusArmor.addEventListener("change", function (e) {
-    state.enemyArmor = clamp(Number(e.target.value) || 0, 0, 100000);
-    e.target.value = state.enemyArmor;
-    renderStatus();
-    save();
-  });
-  if (els.statusWindow) els.statusWindow.addEventListener("input", function (e) {
-    state.statusWindow = clamp(Number(e.target.value) || 0.5, 0.5, 20);
-    renderStatus();
-  });
-  if (els.statusWindow) els.statusWindow.addEventListener("change", function (e) {
-    state.statusWindow = clamp(Number(e.target.value) || 0.5, 0.5, 20);
-    e.target.value = state.statusWindow;
-    renderStatus();
-    save();
-  });
 
   if (els.itemCount) els.itemCount.textContent = String(data.items.length);
   if (els.modCount) els.modCount.textContent = String(data.mods.length);

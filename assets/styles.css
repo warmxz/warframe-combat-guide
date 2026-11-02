@@ -107,6 +107,7 @@ button {
 .top-nav {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 0 0 14px;
   color: var(--dim);
@@ -1318,6 +1319,26 @@ main {
   }
 
   .future-section__stamp {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .top-nav {
+    flex-wrap: nowrap;
+    gap: 5px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .top-nav a {
+    flex: 0 0 auto;
+    padding: 6px 9px;
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+
+  .top-nav span {
     display: none;
   }
 }

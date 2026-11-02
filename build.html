@@ -7,8 +7,8 @@
   <meta name="author" content="WarMXZ">
   <meta name="description" content="Warframe 配卡模拟器：战甲、主武器、副武器、近战 Mod 装备、容量、极性、等级和主要面板实时估算。">
   <title>Warframe 配卡模拟器｜Build Lab</title>
-  <link rel="stylesheet" href="assets/styles.css">
-  <link rel="stylesheet" href="assets/build.css">
+  <link rel="stylesheet" href="assets/styles.css?v=20261102b">
+  <link rel="stylesheet" href="assets/build.css?v=20261102b">
 </head>
 <body>
   <div class="ambient ambient--one" aria-hidden="true"></div>
@@ -20,6 +20,7 @@
       <a href="ores.html">矿采篇</a>
       <a href="fish.html">捕鱼篇</a>
       <a class="is-active" href="build.html">配卡模拟</a>
+      <a href="status.html">异常状态</a>
       <span>WarMXZ 制作</span>
     </nav>
 
@@ -27,7 +28,7 @@
       <div>
         <div class="eyebrow"><span class="eyebrow__dot"></span>WARFRAME / BUILD LAB / BETA</div>
         <h1>配卡模拟器 <span>Build Lab</span></h1>
-        <p>选择战甲或武器，装备 Mod、调整等级与极性，实时查看容量、主要面板与武器异常状态估算。状态结果用于比较配卡方向，不处理紫卡、赋能和条件触发。</p>
+        <p>选择战甲或武器，装备 Mod、调整等级与极性，实时查看容量和主要面板。异常状态计算已拆分为独立工具。</p>
       </div>
       <div class="sim-hero__stats">
         <div><strong id="simItemCount">—</strong><span>可选装备</span></div>
@@ -84,13 +85,13 @@
           <span class="section-kicker">03 / LIVE STATS</span>
           <h2>实时面板</h2>
           <div id="simStats" class="sim-stats"></div>
-          <div class="sim-stat-note">基础面板为通用估算；武器异常状态可在下方单独调整目标与持续射击窗口。</div>
+          <div class="sim-stat-note">基础面板为通用估算；实际伤害受敌人护甲、元素组合和技能影响。</div>
         </aside>
 
         <div class="sim-mod-panel panel-cut">
           <div class="sim-section-head">
             <div>
-              <span class="section-kicker">05 / MOD BROWSER</span>
+              <span class="section-kicker">04 / MOD BROWSER</span>
               <h2 id="simModTitle">Mod 库</h2>
               <p id="simModHint">先点选一个槽位，再选择 Mod。</p>
             </div>
@@ -102,44 +103,6 @@
           <div class="sim-mod-list" id="simModList"></div>
         </div>
 
-        <section class="sim-status-panel panel-cut" id="simStatusPanel" aria-labelledby="simStatusTitle" hidden>
-          <div class="sim-section-head">
-            <div>
-              <span class="section-kicker">04 / STATUS LAB</span>
-              <h2 id="simStatusTitle">异常状态估算</h2>
-              <p>根据最终伤害占比、触发几率、多重射击与射速计算。</p>
-            </div>
-          </div>
-
-          <div class="sim-status-controls">
-            <label for="simStatusFaction">
-              <span>敌人阵营</span>
-              <select id="simStatusFaction">
-                <option value="grineer">Grineer</option>
-                <option value="corpus">Corpus</option>
-                <option value="infested">Infested</option>
-                <option value="orokin">Orokin</option>
-              </select>
-            </label>
-            <label for="simStatusArmor">
-              <span>当前护甲</span>
-              <input id="simStatusArmor" type="number" min="0" max="100000" step="10" value="500">
-            </label>
-            <label for="simStatusWindow">
-              <span>持续射击（秒）</span>
-              <input id="simStatusWindow" type="number" min="0.5" max="20" step="0.5" value="3">
-            </label>
-          </div>
-
-          <div class="sim-status-summary" id="simStatusSummary"></div>
-          <div class="sim-status-list" id="simStatusList"></div>
-
-          <div class="sim-status-method">
-            <strong>估算口径</strong>
-            <p>按持续射击、状态伤害可叠层的稳态计算；基础元素按 Mod 槽位顺序合并，触发类型再按最终伤害占比分配。未计入生命/护甲类型抗性、暴击与爆头、强制触发、紫卡、赋能、技能、特殊武器多模式和敌人实际随机序列。</p>
-            <p>会读取已装备 Mod 中的触发几率、状态伤害、状态持续时间和对应阵营伤害。护甲后的状态总伤请在游戏中结合敌方抗性复核。</p>
-          </div>
-        </section>
       </section>
     </main>
 
@@ -164,6 +127,6 @@
   </div>
 
   <script src="data/build-sim.js"></script>
-  <script src="assets/build.js"></script>
+  <script src="assets/build.js?v=20261102b"></script>
 </body>
 </html>
